@@ -26,8 +26,21 @@ button {
     color: #9AABD8;
 }
 
+.button-secondary {
+    font-family: cursedTimer;
+    font-size: 1.1rem;
+    min-height: 2.5rem;
+    border-color: #ff6060;
+    border-width: 0.125rem;
+    border-radius: 0.3125rem;
+    background-color: transparent;
+    color: #ff6060;
+}
+
 .score-block {
     font-family: cursedTimer;
+    width: 7rem;
+    max-width: 100%;
     font-size: 5rem;
     padding: 1rem;
     background-color: #080001;
@@ -35,6 +48,26 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-width: 0.3rem;
+    border-color: #9AABD8;
+    border-style: solid;
+}
+
+.current-leader {
+    animation: highlight 2s infinite alternate;
+}
+
+@keyframes highlight {
+    0% {
+        box-shadow: 0 0 10px #f39c12;
+        border-color: #f39c12;
+        background-color: #fff;
+    }
+    100% {
+        box-shadow: 0 0 20px #e67e22;
+        border-color: #e67e22;
+        background-color: #f9e79f;
+    }
 }
 
 .text-align-center {
@@ -44,6 +77,10 @@ button {
 .flex-vertical {
     display: flex;
     flex-direction: column;
+}
+
+.flex-vertical.align-center {
+    align-items: center;
 }
 
 .flex-horizontal {
@@ -65,4 +102,84 @@ h3 {
 
 .gap-2 {
     gap: 2rem;
+}
+
+.margin-top {
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+}
+
+.margin-left {
+    margin-bottom: 0rem !important;
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+}
+
+.margin-right {
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+    margin-top: 0rem !important;
+}
+
+.margin-bottom {
+    margin-top: 0rem !important;
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+}
+
+.padding-top {
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+}
+
+.padding-left {
+    padding-bottom: 0rem !important;
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+}
+
+.padding-right {
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+    padding-top: 0rem !important;
+}
+
+.padding-bottom {
+    padding-top: 0rem !important;
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+}
+
+.margin-large {
+    margin: 3rem;
+}
+
+.margin-medium {
+    margin: 2rem;
+}
+
+.margin-small {
+    margin: 1rem;
+}
+
+.margin-xsmall {
+    margin: 0.5rem;
+}
+
+.padding-large {
+    padding: 3rem;
+}
+
+.padding-medium {
+    padding: 2rem;
+}
+
+.padding-small {
+    padding: 1rem;
+}
+
+.padding-xsmall {
+    padding: 0.5rem;
 }
