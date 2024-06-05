@@ -3,32 +3,61 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <div class="flex-vertical align-center">
+            <h2 id="period-counter">First period</h2>
+        </div>
         <div class="container">
             <div class="flex-vertical gap-1">
                 <h3 class="text-align-center">HOME</h3>
                 <div class="score-block-wrapper">
                     <div class="score-block" id="homeScore">0</div>
+                    <div class="flex-vertical gap-1">
+                        <div class="flex-vertical gap-05">
+                            <h4>Fouls</h4>
+                            <h5 id="foul-counter-home">0</h5>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-horizontal gap-05">
+                <div class="flex-horizontal align-center gap-05">
                     <button onclick="gameCounter(1, 'home')">+1</button>
                     <button onclick="gameCounter(2, 'home')">+2</button>
                     <button onclick="gameCounter(3, 'home')">+3</button>
+                </div>
+                <div>
+                    <h4>Fouls Home</h4>
+                    <button onclick="foulCalculate(1, 'home')">+ 1</button>
+                    <button onclick="foulCalculate(-1, 'home')">- 1</button>
                 </div>
             </div>
             <div class="flex-vertical gap-1">
                 <h3 class="text-align-center">GUEST</h3>
                 <div class="score-block-wrapper">
+                    <div class="flex-vertical gap-1">
+                        <div class="flex-vertical gap-05">
+                            <h4>Fouls</h4>
+                            <h5 id="foul-counter-guest">0</h5>
+                        </div>
+                    </div>
                     <div class="score-block" id="guestScore">0</div>
                 </div>
-                <div class="flex-horizontal gap-05">
+                <div class="flex-horizontal align-center gap-05">
                     <button onclick="gameCounter(1, 'guest')">+1</button>
                     <button onclick="gameCounter(2, 'guest')">+2</button>
                     <button onclick="gameCounter(3, 'guest')">+3</button>
                 </div>
+                <div>
+                    <h4>Fouls Guest</h4>
+                    <button onclick="foulCalculate(1, 'guest')">+ 1</button>
+                    <button onclick="foulCalculate(-1, 'guest')">- 1</button>
+                </div>
             </div>
         </div>
         <div class="margin-top margin-large">
-            <div class="flex-vertical align-center">
+            <div class="flex-vertical align-center gap-2">
+                <div class="flex-horizontal gap-05">
+                    <button class="button-third" onclick="periodCalculate(1)">1+ Period</button>
+                    <button class="button-third" onclick="periodCalculate(-1)">1- Period</button>
+                </div>
                 <button class="button-secondary" onclick="newGame()">New Game</button>
             </div>
         </div>
