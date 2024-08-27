@@ -14,6 +14,9 @@ let foulsGuest = 0;
 
 let period = 1;
 
+let gameResultElement = document.getElementById("game-result");
+let winnerAnnouncementElement = document.getElementById("winner-announcement");
+
 function checkLeadingTeam() {
     if (homeScore > guestScore) {
         guestScoreElement.classList.remove("current-leader");
@@ -21,42 +24,64 @@ function checkLeadingTeam() {
     } else if (guestScore > homeScore) {
         homeScoreElement.classList.remove("current-leader");
         guestScoreElement.classList.add("current-leader");
-    } else if (homeScore === guestScore) {
+    } else {
         homeScoreElement.classList.remove("current-leader");
         guestScoreElement.classList.remove("current-leader");
-    } else {
-        console.log("Not currently any leading teams..");
     }
 }
 
-function gameCounter(number, scoreName) {
-    if (scoreName === 'guest') {
-        guestScore += number;
-        guestScoreElement.textContent = guestScore;
-    } else if (scoreName === 'home') {
-        homeScore += number;
+function gameCounter(points, team) {
+    if (team === 'home') {
+        homeScore = Math.max(0, homeScore + points);
         homeScoreElement.textContent = homeScore;
-    } else {
-        console.error("Something wrong happened with the gameCounter function: " + error)
+    } else if (team === 'guest') {
+        guestScore = Math.max(0, guestScore + points);
+        guestScoreElement.textContent = guestScore;
     }
-    checkLeadingTeam()
+    checkLeadingTeam();
 }
 
-function foulCalculate(number, scoreName) {
-    if (scoreName === 'guest') {
-        foulsGuest += number;
-        foulCounterGuest.textContent = foulsGuest;
-    } else if (scoreName === 'home') {
-        foulsHome += number;
-        foulCounterHome.textContent = foulsHome;
-    } else {
-        console.error("Something wrong happened with the foulCalculate function: " + error)
+function foulCalculate(foulPoints, team) {
+    if (team === 'home') {
+        foulsHome = Math.max(0, foulsHome + foulPoints);
+        document.getElementById('foul-counter-home').textContent = foulsHome;
+    } else if (team === 'guest') {
+        foulsGuest = Math.max(0, foulsGuest + foulPoints);
+        document.getElementById('foul-counter-guest').textContent = foulsGuest;
     }
 }
 
-function periodCalculate(number) {
-    period += number;
-    periodCounter.textContent = "Period: " + period;
+function periodCalculate(change) {
+    period = Math.max(1, period + change);
+    updatePeriodDisplay();
+}
+
+function updatePeriodDisplay() {
+    const periodCounter = document.getElementById('period-counter');
+    const periodText = period === 1 ? 'First period' :
+                       period === 2 ? 'Second period' :
+                       period === 3 ? 'Third period' :
+                       period === 4 ? 'Fourth period' :
+                       `Overtime ${period - 4}`;
+    periodCounter.textContent = periodText;
+}
+
+function endGame() {
+    let winner;
+    if (homeScore > guestScore) {
+        winner = "Home";
+    } else if (guestScore > homeScore) {
+        winner = "Guest";
+    } else {
+        winner = "It's a tie";
+    }
+
+    winnerAnnouncementElement.textContent = `Game Over! ${winner} wins!`;
+    gameResultElement.classList.remove("hidden");
+
+    // Disable all buttons except "New Game"
+    const buttons = document.querySelectorAll('button:not([onclick="newGame()"])');
+    buttons.forEach(button => button.disabled = true);
 }
 
 function newGame() {
@@ -71,7 +96,14 @@ function newGame() {
     foulCounterHome.textContent = foulsHome;
 
     period = 1;
-    periodCounter.textContent = "Period: " + period;
+    updatePeriodDisplay();
 
-    checkLeadingTeam()
+    checkLeadingTeam();
+
+    // Re-enable all buttons
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => button.disabled = false);
+
+    // Hide game result
+    gameResultElement.classList.add("hidden");
 }

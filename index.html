@@ -7,60 +7,71 @@
             <h2 id="period-counter">First period</h2>
         </div>
         <div class="container">
-            <div class="flex-vertical gap-1">
+            <!-- Home Team Section -->
+            <div class="team-section">
                 <h3 class="text-align-center">HOME</h3>
                 <div class="score-block-wrapper">
                     <div class="score-block" id="homeScore">0</div>
-                    <div class="flex-vertical gap-1">
-                        <div class="flex-vertical gap-05">
-                            <h4>Fouls</h4>
-                            <h5 id="foul-counter-home">0</h5>
-                        </div>
+                    <div class="foul-section">
+                        <h4>Fouls</h4>
+                        <h5 id="foul-counter-home">0</h5>
                     </div>
                 </div>
-                <div class="flex-horizontal align-center gap-05">
-                    <button onclick="gameCounter(1, 'home')">+1</button>
-                    <button onclick="gameCounter(2, 'home')">+2</button>
-                    <button onclick="gameCounter(3, 'home')">+3</button>
-                </div>
-                <div>
-                    <h4>Fouls Home</h4>
-                    <button onclick="foulCalculate(1, 'home')">+ 1</button>
-                    <button onclick="foulCalculate(-1, 'home')">- 1</button>
+                <div class="control-section">
+                    <div class="score-buttons">
+                        <button onclick="gameCounter(1, 'home')">+1</button>
+                        <button onclick="gameCounter(2, 'home')">+2</button>
+                        <button onclick="gameCounter(3, 'home')">+3</button>
+                    </div>
+                    <div class="foul-buttons">
+                        <h4>Fouls Home</h4>
+                        <button onclick="foulCalculate(1, 'home')">+1</button>
+                        <button onclick="foulCalculate(-1, 'home')">-1</button>
+                    </div>
                 </div>
             </div>
-            <div class="flex-vertical gap-1">
+            
+            <!-- Guest Team Section -->
+            <div class="team-section">
                 <h3 class="text-align-center">GUEST</h3>
                 <div class="score-block-wrapper">
-                    <div class="flex-vertical gap-1">
-                        <div class="flex-vertical gap-05">
-                            <h4>Fouls</h4>
-                            <h5 id="foul-counter-guest">0</h5>
-                        </div>
-                    </div>
                     <div class="score-block" id="guestScore">0</div>
+                    <div class="foul-section">
+                        <h4>Fouls</h4>
+                        <h5 id="foul-counter-guest">0</h5>
+                    </div>
                 </div>
-                <div class="flex-horizontal align-center gap-05">
-                    <button onclick="gameCounter(1, 'guest')">+1</button>
-                    <button onclick="gameCounter(2, 'guest')">+2</button>
-                    <button onclick="gameCounter(3, 'guest')">+3</button>
-                </div>
-                <div>
-                    <h4>Fouls Guest</h4>
-                    <button onclick="foulCalculate(1, 'guest')">+ 1</button>
-                    <button onclick="foulCalculate(-1, 'guest')">- 1</button>
+                <div class="control-section">
+                    <div class="score-buttons">
+                        <button onclick="gameCounter(1, 'guest')">+1</button>
+                        <button onclick="gameCounter(2, 'guest')">+2</button>
+                        <button onclick="gameCounter(3, 'guest')">+3</button>
+                    </div>
+                    <div class="foul-buttons">
+                        <h4>Fouls Guest</h4>
+                        <button onclick="foulCalculate(1, 'guest')">+1</button>
+                        <button onclick="foulCalculate(-1, 'guest')">-1</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="margin-top margin-large">
-            <div class="flex-vertical align-center gap-2">
-                <div class="flex-horizontal gap-05">
-                    <button class="button-third" onclick="periodCalculate(1)">1+ Period</button>
-                    <button class="button-third" onclick="periodCalculate(-1)">1- Period</button>
-                </div>
-                <button class="button-secondary" onclick="newGame()">New Game</button>
+        
+        <!-- Game Control Section -->
+        <div class="game-control-section">
+            <div class="period-buttons">
+                <button class="button-third" onclick="periodCalculate(1)">+1 Period</button>
+                <button class="button-third" onclick="periodCalculate(-1)">-1 Period</button>
             </div>
+            <button class="button-secondary" onclick="newGame()">New Game</button>
+            <button class="button-primary" onclick="endGame()">End Game</button>
         </div>
+        
+        <!-- Game Result Section -->
+        <div id="game-result" class="game-result hidden">
+            <h2 id="winner-announcement"></h2>
+            <button onclick="newGame()">Start New Game</button>
+        </div>
+        
         <script src="index.js"></script>
     </body>
 </html>
